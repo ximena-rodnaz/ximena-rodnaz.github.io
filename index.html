@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Jardín de Ideas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:italic&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-sage: #d4e0d4;
+            --terracotta: #e2725b;
+            --cream: #fffaf5;
+            --text-dark: #4a4a4a;
+            --accent-clay: #b3624d;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+
+        header {
+            grid-column: span 2;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--terracotta);
+            margin: 0;
+        }
+
+        /* Sección Collage */
+        .collage-section {
+            background: var(--pastel-sage);
+            padding: 20px;
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .photo-placeholder {
+            background: #fff;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #aaa;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.02) rotate(2deg);
+        }
+
+        /* Sección Pensamientos Interactivos */
+        .thoughts-section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--pastel-sage);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.02);
+        }
+
+        textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid var(--pastel-sage);
+            font-family: inherit;
+            resize: none;
+            outline: none;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .btn-post {
+            background-color: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        #status-display {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--accent-clay);
+        }
+
+        /* Sección Académica */
+        .academic-section {
+            grid-column: span 2;
+            background: var(--accent-clay);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .interest-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+        }
+
+        h3 { margin-top: 0; width: 100%; font-family: 'Playfair Display', serif; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>flora & fonemas</h1>
+        <p>Bitácora personal de una mente en crecimiento</p>
+    </header>
+
+    <section class="collage-section">
+        <div class="photo-placeholder">Imagen 1</div>
+        <div class="photo-placeholder">Imagen 2</div>
+        <div class="photo-placeholder" style="grid-column: span 2; aspect-ratio: 2/1;">Imagen 3</div>
+    </section>
+
+    <section class="thoughts-section">
+        <h3>Pensamientos del día</h3>
+        <textarea id="thought-input" rows="3" placeholder="¿Qué hay en tu mente hoy?"></textarea>
+        <button class="btn-post" onclick="updateStatus()">Plantar pensamiento</button>
+        <div id="status-display"><em>"La curiosidad es la raíz de todo..."</em></div>
+    </section>
+
+    <section class="academic-section">
+        <h3>Intereses Académicos</h3>
+        <div class="interest-tag">🌿 Botánica Aplicada</div>
+        <div class="interest-tag">📖 Literatura Comparada</div>
+        <div class="interest-tag">🧠 Psicología Cognitiva</div>
+        <div class="interest-tag">🏛️ Historia del Arte</div>
+        <div class="interest-tag">🧬 Genética</div>
+    </section>
+</div>
+
+<script>
+    function updateStatus() {
+        const input = document.getElementById('thought-input');
+        const display = document.getElementById('status-display');
+        if (input.value.trim() !== "") {
+            display.innerHTML = `<strong>Reciente:</strong> "${input.value}"`;
+            input.value = "";
+        }
+    }
+</script>
+
+</body>
+</html>
